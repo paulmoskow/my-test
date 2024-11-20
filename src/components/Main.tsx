@@ -1,13 +1,20 @@
 import React from 'react';
 import Card from "./Card"
 
-export default function Main({ cards }: { cards: string[]}) {
+interface Card {
+  id: number;
+  text: string;
+  saved: boolean;
+}
+
+export default function Main({ cards }: { cards: Card[]}) {
   return (    
     <main className="App-main">
-      {cards.map((card, index: number) => (
+      {cards.map((card) => (
         <Card
-          key={index}
-          text={card}
+          key={card.id}
+          id={card.id}
+          text={card.text}
         />
       ))}
   </main>     

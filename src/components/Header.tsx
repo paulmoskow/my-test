@@ -6,7 +6,9 @@ import logo from '../images/cat-56.svg';
 function Header() {
   return (
     <header className="App-header">
-      <img src={logo} className='App-logo' alt='logo'/>
+      <NavLink to='/'>
+        <img src={logo} className='App-logo' alt='logo'/>
+      </NavLink>
       <h1>
       Cats on facts
       </h1>

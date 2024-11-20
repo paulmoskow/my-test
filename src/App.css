@@ -56,7 +56,7 @@
 
 @media screen and (max-width: 500px) {
   .App-main {
-    grid-template-rows: repeat(5, 150px);
+    grid-template-rows: repeat(5, 170px);
     grid-template-columns: repeat(2, 140px);
   }
 }
