@@ -19,4 +19,4 @@ This project is a test project aimed to create a Single Page Application with a 
 * Form for creating a product with validation.
 * Store product cards in localStorage.
 
-## Public link for the project:
+## Public link for the project: https://paulmoskow.github.io/my-test/
