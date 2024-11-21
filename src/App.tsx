@@ -1,24 +1,39 @@
 import React from 'react';
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { setCards } from './redux/cardsSlice';
 import { RootState } from './redux/store'; 
+import { setCards, toggleSaveCard } from './redux/cardsSlice';
 
 import { api } from './utils/Api';
 
 import './App.css';
 import Header from './components/Header';
 import Main from './components/Main';
+import CardDetails from './components/CardDetails';
 
 function App() {
   const cards = useSelector((state: RootState) => state.cards.cards);
-
-  // Dispatch action to update Redux state
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   //filter saved cards
   const savedCards = cards.filter((card) => card.saved);
 
+  //handle like click
+  const handleLikeClick = (id: number) => {
+    dispatch(toggleSaveCard(id));
+  };
+
+  //handle card click
+  const handleCardClick = (id: number, event: React.MouseEvent) => {
+    const target = event.target as HTMLElement;
+    if (target.classList.contains('App-like') || target.classList.contains('App-trash')) {
+      return; 
+    }
+    navigate(`/products/${id}`);
+  };
+  
+  //fetch cards data from API
   React.useEffect(() => {
     api.getCards()
       .then((res: { data: string[] }) => {
@@ -29,7 +44,6 @@ function App() {
       });
   }, [dispatch]);
 
-
   return (
     <div className="App">
       <Routes>
@@ -38,6 +52,8 @@ function App() {
             <Header />
             <Main
               cards={cards}
+              onCardClick={handleCardClick}
+              onLikeClick={handleLikeClick} 
             />     
           </>            
         } />
@@ -48,10 +64,21 @@ function App() {
               <p>Add cats facts to your collection by clicking 'like' button</p>
             ) : (
               <Main
-                cards={savedCards}   
+                cards={savedCards}
+                onCardClick={handleCardClick}
+                onLikeClick={handleLikeClick}   
               />            
             )}               
           </>            
+        } />
+        <Route path='/products/:id' element={
+          <>
+            <Header/>
+            <CardDetails
+              cards={cards}
+              onLikeClick={handleLikeClick}              
+            />
+          </>
         } />
        </Routes>
 

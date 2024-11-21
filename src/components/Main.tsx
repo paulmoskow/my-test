@@ -1,13 +1,13 @@
-import React from 'react';
 import Card from "./Card"
 
-interface Card {
-  id: number;
-  text: string;
-  saved: boolean;
-}
+type MainProps = {
+  cards: { id: number; text: string; saved: boolean }[];
+  onCardClick: (id: number, event: React.MouseEvent) => void;
+  onLikeClick: (id: number) => void;
+};
 
-export default function Main({ cards }: { cards: Card[]}) {
+export default function Main({ cards, onCardClick, onLikeClick }: MainProps) {
+
   return (    
     <main className="App-main">
       {cards.map((card) => (
@@ -15,6 +15,9 @@ export default function Main({ cards }: { cards: Card[]}) {
           key={card.id}
           id={card.id}
           text={card.text}
+          saved={card.saved}
+          onCardClick={onCardClick}
+          onLikeClick={onLikeClick}
         />
       ))}
   </main>     

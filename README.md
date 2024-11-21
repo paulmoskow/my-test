@@ -1,6 +1,6 @@
 # Test Task for React
 
-This project is a test project with the aim to create a Single Page Application with a list of cards, each containing information either fetched from an endpoint or created by the user. For the task, the public API https://github.com/wh-iterabb-it/meowfacts is used.
+This project is a test project aimed to create a Single Page Application with a list of cards, each containing information either fetched from an endpoint or created by the user. For the task, the public API https://github.com/wh-iterabb-it/meowfacts is used.
 
 ## Tech Stack
 
