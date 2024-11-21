@@ -47,7 +47,7 @@ function App() {
   return (
     <div className="App">
       <Routes>
-        <Route path='/my-test' element={
+        <Route path='/my-test/' element={
           <>
             <Header />
             <Main
@@ -71,7 +71,7 @@ function App() {
             )}               
           </>            
         } />
-        <Route path='my-test/products/:id' element={
+        <Route path='/my-test/products/:id' element={
           <>
             <Header/>
             <CardDetails

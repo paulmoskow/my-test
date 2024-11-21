@@ -6,7 +6,7 @@ import logo from '../images/cat.svg';
 function Header() {
   return (
     <header className="App-header">
-      <NavLink to='/'>
+      <NavLink to='/my-test/'>
         <img src={logo} className='App-logo' alt='logo'/>
       </NavLink>
       <h1>
