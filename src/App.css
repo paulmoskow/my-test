@@ -37,6 +37,12 @@
   flex-direction: column;
   align-items: start;
   justify-content: space-between;
+  cursor: pointer;
+}
+
+.App-card__info:hover {
+  transform: scale(1.1);
+  transition: all .5s linear;
 }
 
 .App-card__text {
@@ -51,8 +57,13 @@
 
 .App-link {
   color: #61dafb;
+  cursor: pointer;
 }
 
+.App-link:hover, .App-like:hover, .App-trash:hover {
+  transform: scale(1.1);
+  transition: all .5s linear;
+}
 
 @media screen and (max-width: 500px) {
   .App-main {

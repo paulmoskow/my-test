@@ -1,5 +1,7 @@
 import React from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { RootState } from '../redux/store';
 
 import like from "../images/like.svg";
 import trash from '../images/trash.svg';
@@ -10,19 +12,25 @@ interface Card {
   saved: boolean;
 }
 
-interface DetailsProps {
-  cards: Card[]; 
-  onLikeClick: (id: number, event: React.MouseEvent) => void; 
+interface CardDetailsProps {
+  onLikeClick: (id: number) => void; 
 }
 
-const CardDetails: React.FC<DetailsProps> = ({ cards, onLikeClick }) => {
+const CardDetails: React.FC<CardDetailsProps> = ({ onLikeClick }) => {
   const navigate = useNavigate();
+  const { id } = useParams<{ id: string }>();
 
-  const { id } = useParams<{ id: string }>(); 
-  const card = cards.find((card) => card.id === Number(id)); 
+  const card = useSelector((state: RootState) => 
+    state.cards.cards.find((card) => card.id === Number(id))
+  ) as Card | undefined;
 
   const handleGoBack = () => {
     navigate(-1); 
+  };
+
+  const handleLikeClick = (id: number, event: React.MouseEvent) => {
+    event.stopPropagation(); 
+    onLikeClick(id);  
   };
 
   if (!card) {
@@ -33,20 +41,20 @@ const CardDetails: React.FC<DetailsProps> = ({ cards, onLikeClick }) => {
     <section className="App-card__details">
       <p className="App-card__text">{card.text}</p>
       <nav className="App-card__nav">
-        <p onClick={handleGoBack}>&larr; Go back</p>
+        <p onClick={handleGoBack} className='App-link'>&larr; Go back</p>
         {card.saved ? (
           <img
             src={trash}
             className="App-trash"
             alt="delete"
-            onClick={(e) => onLikeClick(card.id, e)} 
+            onClick={(e) => handleLikeClick(card.id, e)} 
           />
         ) : (
           <img
             src={like}
             className="App-like"
             alt="like"
-            onClick={(e) => onLikeClick(card.id, e)} 
+            onClick={(e) => handleLikeClick(card.id, e)} 
           />
         )}
       </nav>

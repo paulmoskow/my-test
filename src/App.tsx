@@ -75,7 +75,6 @@ function App() {
           <>
             <Header/>
             <CardDetails
-              cards={cards}
               onLikeClick={handleLikeClick}              
             />
           </>

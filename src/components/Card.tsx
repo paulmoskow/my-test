@@ -34,7 +34,7 @@ export default function Card({ id, text, saved, onCardClick, onLikeClick }: Card
     <section className="App-card" onClick={handleCardClick}>
       <p className="App-card__text">{filter(text, 100)}</p>
       <nav className="App-card__nav">
-        <p>more info</p>
+        <p className="App-card__info">more info</p>
         {location.pathname === '/' ? (
           <img 
             src={saved? likeActive : like} 
