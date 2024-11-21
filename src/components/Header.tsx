@@ -10,10 +10,10 @@ function Header() {
         <img src={logo} className='App-logo' alt='logo'/>
       </NavLink>
       <h1>
-      Cats on facts
+        cats on facts
       </h1>
-      <NavLink to='/my-test/products' className='App-link'>Your cats</NavLink>
-      <NavLink to='/my-test/create-product' className='App-link'>Make fact</NavLink>
+      <NavLink to='/my-test/products' className='App-link'>your cats</NavLink>
+      <NavLink to='/my-test/create-product' className='App-link'>make fact</NavLink>
     </header>
   );
 }
