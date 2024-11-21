@@ -39,7 +39,7 @@ const CardDetails: React.FC<CardDetailsProps> = ({ onLikeClick }) => {
 
   return (
     <section className="App-card__details">
-      <p className="App-card__text">{card.text}</p>
+      <p className="App-details__text">{card.text}</p>
       <nav className="App-card__nav">
         <p onClick={handleGoBack} className='App-link'>&larr; Go back</p>
         {card.saved ? (
