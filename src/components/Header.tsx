@@ -12,8 +12,8 @@ function Header() {
       <h1>
       Cats on facts
       </h1>
-      <NavLink to='/products' className='App-link'>Your cats</NavLink>
-      <NavLink to='/create-product' className='App-link'>Make fact</NavLink>
+      <NavLink to='/my-test/products' className='App-link'>Your cats</NavLink>
+      <NavLink to='/my-test/create-product' className='App-link'>Make fact</NavLink>
     </header>
   );
 }

@@ -30,7 +30,7 @@ function App() {
     if (target.classList.contains('App-like') || target.classList.contains('App-trash')) {
       return; 
     }
-    navigate(`/products/${id}`);
+    navigate(`/my-test/products/${id}`);
   };
   
   //fetch cards data from API
@@ -47,7 +47,7 @@ function App() {
   return (
     <div className="App">
       <Routes>
-        <Route path='/' element={
+        <Route path='/my-test' element={
           <>
             <Header />
             <Main
@@ -57,7 +57,7 @@ function App() {
             />     
           </>            
         } />
-        <Route path='/products' element={
+        <Route path='/my-test/products' element={
           <>
             <Header />
             {savedCards.length === 0 ? (
@@ -71,7 +71,7 @@ function App() {
             )}               
           </>            
         } />
-        <Route path='/products/:id' element={
+        <Route path='my-test/products/:id' element={
           <>
             <Header/>
             <CardDetails
