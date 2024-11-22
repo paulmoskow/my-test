@@ -48,7 +48,7 @@ function App() {
       saved: true,
     };
     dispatch(addCard(newCard));
-    navigate('/');
+    navigate('/my-test/');
   } 
 
   //fetch cards data from API
