@@ -23,7 +23,7 @@
 .App-main {
   display: grid;
   grid-auto-flow: row;
-  grid-template-rows: repeat(3, 180px);
+  grid-template-rows: repeat(2, 180px);
   grid-template-columns: repeat(3, 140px);
   font-size: calc(7px + 1vmin);
   gap: 10px;
@@ -111,7 +111,7 @@
 
 @media screen and (max-width: 500px) {
   .App-main {
-    grid-template-rows: repeat(4, 170px);
+    grid-template-rows: repeat(3, 170px);
     grid-template-columns: repeat(2, 140px);
   }
 }
