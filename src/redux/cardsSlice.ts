@@ -28,6 +28,10 @@ const cardsSlice = createSlice({
       })); 
       localStorage.setItem('cards', JSON.stringify(state.cards)); 
     },
+    addCard: (state, action: PayloadAction<{ id: number; text: string; saved: boolean}>) => {
+      state.cards.push(action.payload);
+      localStorage.setItem('cards', JSON.stringify(state.cards));
+    },
     toggleSaveCard: (state, action: PayloadAction<number>) => {
       const cardId = action.payload;
       const card = state.cards.find((card) => card.id === cardId);
@@ -35,9 +39,14 @@ const cardsSlice = createSlice({
         card.saved = !card.saved;
         localStorage.setItem('cards', JSON.stringify(state.cards));
       }
+    },
+    deleteCard: (state, action: PayloadAction<number>) => {
+      const cardId = action.payload;
+      state.cards = state.cards.filter((card) => card.id !== cardId);
+      localStorage.setItem('cards', JSON.stringify(state.cards));
     }
   },
 });
 
-export const { setCards, toggleSaveCard } = cardsSlice.actions;
+export const { setCards, addCard, toggleSaveCard, deleteCard } = cardsSlice.actions;
 export default cardsSlice.reducer;

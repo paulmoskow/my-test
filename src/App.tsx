@@ -2,7 +2,7 @@ import React from 'react';
 import { Route, Routes, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from './redux/store'; 
-import { setCards, toggleSaveCard } from './redux/cardsSlice';
+import { setCards, addCard, toggleSaveCard, deleteCard } from './redux/cardsSlice';
 
 import { api } from './utils/Api';
 
@@ -10,6 +10,8 @@ import './App.css';
 import Header from './components/Header';
 import Main from './components/Main';
 import CardDetails from './components/CardDetails';
+import Form from './components/Form';
+import NotFound from './components/NotFound';
 
 function App() {
   const cards = useSelector((state: RootState) => state.cards.cards);
@@ -24,6 +26,11 @@ function App() {
     dispatch(toggleSaveCard(id));
   };
 
+  //handle delete click
+  const handleDeleteClick = (id: number) => {
+    dispatch(deleteCard(id));
+  };
+
   //handle card click
   const handleCardClick = (id: number, event: React.MouseEvent) => {
     const target = event.target as HTMLElement;
@@ -33,6 +40,17 @@ function App() {
     navigate(`/products/${id}`);
   };
   
+  //handle form submit
+  const handleFormSubmit = (data: { text: string }) => {
+    const newCard = {
+      id: cards.length,
+      text: data.text,
+      saved: true,
+    };
+    dispatch(addCard(newCard));
+    navigate('/');
+  } 
+
   //fetch cards data from API
   React.useEffect(() => {
     api.getCards()
@@ -54,6 +72,7 @@ function App() {
               cards={cards}
               onCardClick={handleCardClick}
               onLikeClick={handleLikeClick} 
+              onDeleteClick={handleDeleteClick}
             />     
           </>            
         } />
@@ -66,7 +85,8 @@ function App() {
               <Main
                 cards={savedCards}
                 onCardClick={handleCardClick}
-                onLikeClick={handleLikeClick}   
+                onLikeClick={handleLikeClick}
+                onDeleteClick={handleDeleteClick}   
               />            
             )}               
           </>            
@@ -75,8 +95,22 @@ function App() {
           <>
             <Header/>
             <CardDetails
-              onLikeClick={handleLikeClick}              
+              onLikeClick={handleLikeClick}
+              onDeleteClick={handleDeleteClick}              
             />
+          </>
+        } />
+        <Route path='/create-product' element={
+          <>
+            <Header/>
+            <Form
+              onSubmit={handleFormSubmit}   
+            />
+          </>
+        } />
+        <Route path='/*' element={
+          <>
+            <NotFound/>
           </>
         } />
        </Routes>
