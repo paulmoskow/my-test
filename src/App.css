@@ -38,6 +38,7 @@
   flex-direction: column;
   align-items: start;
   cursor: pointer;
+  position: relative;
 }
 
 .App-card__info:hover {
@@ -52,7 +53,8 @@
 .App-card__nav {
   width: 100%;
   display: flex;
-  justify-content: space-between;
+  justify-content: end;
+  align-items: center;
   height: 40px;
 }
 
@@ -66,6 +68,7 @@
   border: 1px solid #61dafb;
   border-radius: 10px;
   padding: 40px;
+  position: relative;
 }
 
 .App-details__text {
@@ -83,8 +86,27 @@
   transition: all .5s linear;
 }
 
-.App-like, .App-trash {
+.App-like {
   transition: all .5s linear;
+  width: 20px;
+  height: 20px;
+  margin: 0;
+}
+
+.App-trash {
+  transition: all .5s linear;
+  width: 20px;
+  height: 20px;
+  margin: 0 15px 0 30px;
+}
+
+.App-notfound {
+  height: 100vmin;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
 
 @media screen and (max-width: 500px) {

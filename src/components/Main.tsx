@@ -4,9 +4,10 @@ type MainProps = {
   cards: { id: number; text: string; saved: boolean }[];
   onCardClick: (id: number, event: React.MouseEvent) => void;
   onLikeClick: (id: number) => void;
+  onDeleteClick: (id: number) => void;
 };
 
-export default function Main({ cards, onCardClick, onLikeClick }: MainProps) {
+export default function Main({ cards, onCardClick, onLikeClick, onDeleteClick }: MainProps) {
 
   return (    
     <main className="App-main">
@@ -18,6 +19,7 @@ export default function Main({ cards, onCardClick, onLikeClick }: MainProps) {
           saved={card.saved}
           onCardClick={onCardClick}
           onLikeClick={onLikeClick}
+          onDeleteClick={onDeleteClick}
         />
       ))}
   </main>     
