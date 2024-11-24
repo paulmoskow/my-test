@@ -46,6 +46,7 @@ const CardDetails = ({ onLikeClick, onDeleteClick } : CardDetailsProps) => {
 
   return (
     <section className="App-card__details">
+      <h2>fact №{card.id + 1}</h2>
       <p className="App-details__text">{card.text}</p>
       <nav className="App-card__nav">
         <p onClick={handleGoBack} className='App-link'>&larr; go back</p>

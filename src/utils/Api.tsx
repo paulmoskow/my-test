@@ -17,7 +17,7 @@ class Api {
   }
 
   getCards() {
-    return fetch(`${this._url}/?count=6`)
+    return fetch(`${this._url}/?count=10`)
       .then(this._getRes);
   }  
 }

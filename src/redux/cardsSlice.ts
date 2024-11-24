@@ -29,7 +29,7 @@ const cardsSlice = createSlice({
       localStorage.setItem('cards', JSON.stringify(state.cards)); 
     },
     addCard: (state, action: PayloadAction<{ id: number; text: string; saved: boolean}>) => {
-      state.cards.push(action.payload);
+      state.cards = [action.payload, ...state.cards];
       localStorage.setItem('cards', JSON.stringify(state.cards));
     },
     toggleSaveCard: (state, action: PayloadAction<number>) => {

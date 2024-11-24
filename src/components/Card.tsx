@@ -2,7 +2,7 @@ import like from '../images/like.svg';
 import likeActive from '../images/like_active.svg';
 import trash from '../images/trash.svg';
 
-type CardProps = {
+interface CardProps {
   id: number;
   text: string;
   saved: boolean;

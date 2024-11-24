@@ -12,6 +12,7 @@ import Main from './components/Main';
 import CardDetails from './components/CardDetails';
 import Form from './components/Form';
 import NotFound from './components/NotFound';
+import Footer from "./components/Footer";
 
 function App() {
   const cards = useSelector((state: RootState) => state.cards.cards);
@@ -73,7 +74,7 @@ function App() {
           <>
             <Header />
             {preloader ? (
-              <h2>Loading...</h2>
+              <h3 className='App-preloader'>loading...</h3>
             ):(
             <Main
               cards={cards}
@@ -82,6 +83,7 @@ function App() {
               onDeleteClick={handleDeleteClick}
             />    
             )}
+            <Footer />
           </>            
         } />
         <Route path='/products' element={
@@ -96,7 +98,8 @@ function App() {
                 onLikeClick={handleLikeClick}
                 onDeleteClick={handleDeleteClick}   
               />            
-            )}               
+            )}      
+            <Footer />         
           </>            
         } />
         <Route path='/products/:id' element={
@@ -106,6 +109,7 @@ function App() {
               onLikeClick={handleLikeClick}
               onDeleteClick={handleDeleteClick}              
             />
+            <Footer />
           </>
         } />
         <Route path='/create-product' element={
@@ -114,6 +118,7 @@ function App() {
             <Form
               onSubmit={handleFormSubmit}   
             />
+            <Footer />
           </>
         } />
         <Route path='/*' element={
