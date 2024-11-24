@@ -23,10 +23,16 @@
 .App-main {
   display: grid;
   grid-auto-flow: row;
-  grid-template-rows: repeat(4, 180px);
+  grid-template-rows: 30px repeat(4, 180px);
   grid-template-columns: repeat(3, 140px);
   font-size: calc(7px + 1vmin);
   gap: 10px;
+}
+
+.App-main > :first-child {
+  grid-column: span 3; 
+  grid-row: 1; 
+  height: 15px; 
 }
 
 .App-card {
@@ -113,5 +119,9 @@
   .App-main {
     grid-template-rows: repeat(5, 170px);
     grid-template-columns: repeat(2, 140px);
+  }
+
+  .App-main > :first-child {
+    grid-column: span 2; 
   }
 }

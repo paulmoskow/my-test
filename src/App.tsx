@@ -20,6 +20,7 @@ function App() {
 
   //filter saved cards
   const savedCards = cards.filter((card) => card.saved);
+  const [preloader, setPreloader] = React.useState(false);
 
   //handle like click
   const handleLikeClick = (id: number) => {
@@ -53,12 +54,15 @@ function App() {
 
   //fetch cards data from API
   React.useEffect(() => {
+    setPreloader(true);
     api.getCards()
       .then((res: { data: string[] }) => {
         dispatch(setCards(res.data));
+        setPreloader(false);
       })
       .catch((err: unknown) => {
         console.log(err);
+        setPreloader(false);
       });
   }, [dispatch]);
 
@@ -68,12 +72,16 @@ function App() {
         <Route path='/' element={
           <>
             <Header />
+            {preloader ? (
+              <h2>Loading...</h2>
+            ):(
             <Main
               cards={cards}
               onCardClick={handleCardClick}
               onLikeClick={handleLikeClick} 
               onDeleteClick={handleDeleteClick}
-            />     
+            />    
+            )}
           </>            
         } />
         <Route path='/products' element={

@@ -1,3 +1,4 @@
+import React from "react";
 import Card from "./Card"
 
 type MainProps = {
@@ -8,10 +9,25 @@ type MainProps = {
 };
 
 export default function Main({ cards, onCardClick, onLikeClick, onDeleteClick }: MainProps) {
+  const [shortCards, setLongCards] = React.useState<MainProps['cards'] | null>(null)
+
+  const handleCheckbox = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setLongCards(event.target.checked? cards.filter((card) => card.text.length < 100) : null);
+  };
+
+  const cardsToRender = shortCards || cards;
 
   return (    
     <main className="App-main">
-      {cards.map((card) => (
+      <section>
+        <input
+          type="checkbox"
+          onChange={handleCheckbox}
+        />     
+        <label className="App-card__text">only short facts</label>
+      </section>
+
+      {cardsToRender.map((card) => (
         <Card
           key={card.id}
           id={card.id}
