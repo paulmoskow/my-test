@@ -1,8 +1,21 @@
+@keyframes fade-out {
+  from {
+    color: black;
+  } 
+  to {
+    color: white;
+  }
+}
+
 .App {
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 20px 50px;
+}
+
+.App-preloader {
+  animation: fade-out .3s ease-in-out infinite;
 }
 
 .App-logo {
@@ -106,6 +119,14 @@
   margin: 0 15px 0 30px;
 }
 
+.App-form__button {
+  margin: 0 5px;
+  border: 1px solid grey;
+  border-radius: 2px;
+  background-color: #61dafb;
+  padding: 3px 30px;
+}
+
 .App-notfound {
   height: 100vmin;
   display: flex;
@@ -113,6 +134,18 @@
   justify-content: center;
   align-items: center;
   text-align: center;
+}
+
+.App-footer {
+  margin-top: 50px;
+  text-align: right;
+  align-self: end;
+}
+
+.App-copyright {
+  text-decoration: none;
+  color:#61dafb;
+  font-size: calc(6px + 1vmin);
 }
 
 @media screen and (max-width: 500px) {
